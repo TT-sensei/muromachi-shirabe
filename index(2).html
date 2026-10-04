@@ -1,0 +1,814 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f2eb">
+  <title>室町から、今へ。｜今に伝わる室町文化</title>
+  <meta name="description" content="小学6年社会科『今に伝わる室町文化と人々のくらし』の調べ学習用サイト。室町時代に生まれたり広まったりした文化を、今とのつながりから調べます。">
+  <style>
+    :root {
+      --bg: #f5f2eb;
+      --paper: #fffdf8;
+      --ink: #23313a;
+      --muted: #66737a;
+      --line: #d9d4c8;
+      --navy: #243b4a;
+      --blue: #567a91;
+      --blue-soft: #e7eef2;
+      --green: #607667;
+      --green-soft: #e7eee9;
+      --sand: #efe7d8;
+      --accent: #8b6d4a;
+      --accent-soft: #f1e6d9;
+      --focus: #9c7748;
+      --shadow: 0 10px 28px rgba(37, 48, 54, .07);
+      --radius: 18px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+      color: var(--ink);
+      background:
+        linear-gradient(rgba(255,255,255,.45), rgba(255,255,255,.45)),
+        var(--bg);
+      line-height: 1.75;
+      letter-spacing: .02em;
+    }
+
+    a { color: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+
+    .site-shell { width: min(1180px, calc(100% - 28px)); margin: 0 auto; }
+
+    .hero {
+      padding: 36px 0 22px;
+    }
+
+    .hero-card {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 280px;
+      gap: 24px;
+      align-items: center;
+      padding: 28px 30px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hero-card::after {
+      content: "";
+      position: absolute;
+      width: 280px;
+      height: 280px;
+      right: -140px;
+      top: -120px;
+      background: radial-gradient(circle, rgba(86,122,145,.10), transparent 68%);
+      pointer-events: none;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 5px 11px;
+      border-radius: 999px;
+      background: var(--blue-soft);
+      color: var(--navy);
+      font-size: .82rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--blue);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      line-height: 1.2;
+      letter-spacing: .04em;
+      color: var(--navy);
+    }
+
+    .hero-subtitle {
+      margin: 8px 0 14px;
+      font-size: clamp(1.08rem, 2vw, 1.35rem);
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .hero-copy {
+      margin: 0;
+      max-width: 760px;
+      font-size: 1rem;
+    }
+
+    .hero-character {
+      width: 100%;
+      max-width: 280px;
+      justify-self: end;
+      display: block;
+      object-fit: contain;
+    }
+
+    .section { padding: 18px 0; }
+    .section-title {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      margin: 0 0 12px;
+    }
+    .section-title h2 {
+      margin: 0;
+      font-size: clamp(1.3rem, 2.2vw, 1.8rem);
+      color: var(--navy);
+      letter-spacing: .03em;
+    }
+    .section-title p {
+      margin: 0;
+      color: var(--muted);
+      font-size: .9rem;
+    }
+
+    .intro-note {
+      background: linear-gradient(120deg, var(--sand), #f8f3ea);
+      border: 1px solid #ded4c5;
+      border-radius: var(--radius);
+      padding: 18px 20px;
+    }
+    .intro-note strong { color: var(--navy); }
+
+    .start-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .source-card {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(37, 48, 54, .04);
+    }
+    .source-card h3 { margin: 0 0 5px; font-size: 1.06rem; }
+    .source-card p { margin: 0 0 13px; color: var(--muted); font-size: .92rem; }
+
+    .link-row { display: flex; flex-wrap: wrap; gap: 8px; }
+    .source-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 8px 13px;
+      text-decoration: none;
+      border-radius: 11px;
+      background: var(--navy);
+      color: #fff;
+      font-weight: 700;
+      font-size: .9rem;
+      transition: transform .16s ease, opacity .16s ease, box-shadow .16s ease;
+      box-shadow: 0 4px 10px rgba(36,59,74,.12);
+    }
+    .source-link:hover { transform: translateY(-1px); }
+    .source-link:active { transform: translateY(0); }
+    .source-link:focus-visible,
+    .topic-nav a:focus-visible,
+    summary:focus-visible {
+      outline: 3px solid rgba(156,119,72,.35);
+      outline-offset: 3px;
+    }
+
+    .topic-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .topic-nav a {
+      padding: 7px 11px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      text-decoration: none;
+      background: rgba(255,253,248,.8);
+      color: var(--navy);
+      font-size: .86rem;
+      font-weight: 700;
+      transition: background .16s ease, transform .16s ease;
+    }
+    .topic-nav a:hover { background: #fff; transform: translateY(-1px); }
+
+    .topic-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .topic-card {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 18px;
+      box-shadow: 0 7px 19px rgba(37, 48, 54, .045);
+      scroll-margin-top: 18px;
+      position: relative;
+      transition: border-color .2s ease, box-shadow .2s ease, transform .2s ease;
+    }
+    .topic-card.study-now {
+      border-color: var(--focus);
+      box-shadow: 0 0 0 3px rgba(156,119,72,.13), var(--shadow);
+    }
+    .topic-card.study-now::before {
+      content: "調べ中";
+      position: absolute;
+      top: 13px;
+      right: 13px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-weight: 800;
+      font-size: .72rem;
+    }
+
+    .topic-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      background: var(--blue-soft);
+      color: var(--navy);
+      font-weight: 800;
+      font-size: .88rem;
+      margin-bottom: 9px;
+    }
+    .topic-card.living .topic-number { background: var(--green-soft); color: #4e6356; }
+    .topic-card.life .topic-number { background: var(--accent-soft); color: #7a5a3d; }
+
+    .topic-card h3 {
+      margin: 0 0 5px;
+      font-size: 1.12rem;
+      color: var(--navy);
+      line-height: 1.45;
+    }
+    .topic-lead {
+      margin: 0 0 9px;
+      font-weight: 800;
+      color: var(--accent);
+      font-size: .93rem;
+    }
+    .topic-desc { margin: 0 0 13px; color: var(--muted); font-size: .9rem; }
+
+    details {
+      border-top: 1px dashed var(--line);
+      margin-top: 11px;
+      padding-top: 10px;
+    }
+    summary {
+      cursor: pointer;
+      color: var(--navy);
+      font-weight: 800;
+      font-size: .88rem;
+      list-style: none;
+    }
+    summary::-webkit-details-marker { display: none; }
+    summary::after { content: "＋"; float: right; color: var(--muted); }
+    details[open] summary::after { content: "−"; }
+
+    .memo-box, .tip-box {
+      margin-top: 9px;
+      padding: 11px 12px;
+      border-radius: 12px;
+      font-size: .86rem;
+    }
+    .memo-box {
+      background: #f3f6f7;
+      border: 1px solid #dfe6e8;
+    }
+    .tip-box {
+      background: #f7f4ee;
+      border: 1px solid #e7dfd2;
+    }
+    .memo-box strong, .tip-box strong { display: block; margin-bottom: 3px; color: var(--navy); }
+    .memo-box ul, .tip-box p { margin: 0; padding-left: 1.1em; }
+    .tip-box p { padding-left: 0; }
+
+    .guide-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0,1fr));
+      gap: 12px;
+    }
+    .guide-item {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 14px;
+    }
+    .guide-step {
+      display: block;
+      font-size: .76rem;
+      color: var(--accent);
+      font-weight: 900;
+      margin-bottom: 3px;
+      letter-spacing: .06em;
+    }
+    .guide-item h3 { margin: 0 0 4px; font-size: 1rem; }
+    .guide-item p { margin: 0; color: var(--muted); font-size: .85rem; }
+
+    .summary-card {
+      background: linear-gradient(135deg, #f0ebe1, #fbf8f2);
+      border: 1px solid #ded7cb;
+      border-radius: 22px;
+      padding: 22px;
+    }
+    .summary-question {
+      margin: 3px 0 15px;
+      font-size: clamp(1.25rem, 2.2vw, 1.65rem);
+      font-weight: 900;
+      color: var(--navy);
+    }
+    .lens-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .lens {
+      background: rgba(255,253,248,.86);
+      border: 1px solid rgba(36,59,74,.12);
+      border-radius: 14px;
+      padding: 14px;
+    }
+    .lens b { display:block; color: var(--accent); margin-bottom: 3px; }
+    .lens p { margin: 0; color: var(--muted); font-size: .88rem; }
+
+    .notebook-note {
+      margin-top: 12px;
+      padding: 14px 16px;
+      border-left: 4px solid var(--blue);
+      background: rgba(231,238,242,.55);
+      border-radius: 0 13px 13px 0;
+    }
+    .notebook-note strong { color: var(--navy); }
+
+    footer {
+      padding: 26px 0 34px;
+      color: var(--muted);
+      font-size: .78rem;
+      text-align: center;
+    }
+
+    .hidden-dev-note { display: none; }
+
+    @media (max-width: 980px) {
+      .topic-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+      .guide-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+      .hero-card { grid-template-columns: 1fr 220px; }
+    }
+
+    @media (max-width: 720px) {
+      .site-shell { width: min(100% - 18px, 680px); }
+      .hero { padding-top: 18px; }
+      .hero-card { grid-template-columns: 1fr; padding: 22px; }
+      .hero-character { justify-self: center; max-width: 220px; }
+      .start-grid, .topic-grid, .lens-grid { grid-template-columns: 1fr; }
+      .guide-grid { grid-template-columns: 1fr 1fr; }
+      .section-title { align-items: flex-start; flex-direction: column; gap: 1px; }
+    }
+
+    @media (max-width: 470px) {
+      .guide-grid { grid-template-columns: 1fr; }
+      .link-row { flex-direction: column; }
+      .source-link { width: 100%; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="site-shell">
+      <section class="hero" aria-labelledby="page-title">
+        <div class="hero-card">
+          <div>
+            <div class="eyebrow">6年 社会科｜調べ学習</div>
+            <h1 id="page-title">室町から、今へ。</h1>
+            <p class="hero-subtitle">今に伝わる室町文化を探してみよう</p>
+            <p class="hero-copy">
+              <ruby>室町時代<rt>むろまちじだい</rt></ruby>に生まれたり、広まったりした文化の中には、今のわたしたちの生活にも残っているものがあります。<br>
+              金閣・銀閣で見た室町文化を手がかりに、気になったものを選んで調べてみよう。
+            </p>
+          </div>
+          <img
+            class="hero-character"
+            src="https://tt-sensei.github.io/navi-character-/assets/web/groups/learning/group-learning-social-sources.webp"
+            alt="学習・資料調べをイメージしたNAVIキャラクターの集合"
+            loading="eager"
+          >
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="start-title">
+        <div class="section-title">
+          <h2 id="start-title">まずは全体を知ろう</h2>
+          <p>室町文化には、どんなものがある？</p>
+        </div>
+        <div class="start-grid">
+          <article class="source-card">
+            <h3>Yahoo!きっず「室町時代の文化」</h3>
+            <p>室町文化を全体からつかむ入口。いろいろな文化をざっくり見てみよう。</p>
+            <div class="link-row">
+              <a class="source-link" href="https://kids.yahoo.co.jp/study/social/soc031.html" target="_blank" rel="noopener noreferrer" data-theme="overview">資料を見る ↗</a>
+            </div>
+          </article>
+          <article class="source-card">
+            <h3>NHK for School「室町時代の文化」</h3>
+            <p>動画で全体をつかむ。気になった言葉や文化を覚えておこう。</p>
+            <div class="link-row">
+              <a class="source-link" href="https://edu.web.nhk/school/watch/bangumi/?das_id=D0005120237_00000" target="_blank" rel="noopener noreferrer" data-theme="overview">動画を見る ↗</a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="topics" aria-labelledby="topics-title">
+        <div class="section-title">
+          <h2 id="topics-title">気になる文化を選ぼう</h2>
+          <p>全部調べなくてもOK。気になったところから始めよう。</p>
+        </div>
+        <nav class="topic-nav" aria-label="テーマ一覧">
+          <a href="#syoin">書院造</a>
+          <a href="#suibokuga">水墨画・雪舟</a>
+          <a href="#karesansui">枯山水</a>
+          <a href="#nou">能・狂言</a>
+          <a href="#tea">茶の湯</a>
+          <a href="#ikebana">いけばな</a>
+          <a href="#gion">祇園祭</a>
+          <a href="#otogizoshi">おとぎ草子</a>
+          <a href="#market">市・商売</a>
+        </nav>
+
+        <div class="topic-grid">
+          <article class="topic-card living" id="syoin" data-topic="syoin">
+            <span class="topic-number">01</span>
+            <h3><ruby>書院造<rt>しょいんづくり</rt></ruby></h3>
+            <p class="topic-lead">今の和室につながる住まい</p>
+            <p class="topic-desc">畳、障子、ふすま、床の間、違い棚、付書院など。今の和室にもつながる部屋のつくりです。</p>
+            <div class="link-row">
+              <a class="source-link" href="https://www.touken-world.jp/history/history-important-word/syoinzukuri/" target="_blank" rel="noopener noreferrer" data-theme="syoin">書院造を調べる ↗</a>
+            </div>
+            <details>
+              <summary>ノートにメモ・調べるポイント</summary>
+              <div class="memo-box">
+                <strong>ノートにメモ</strong>
+                <ul>
+                  <li>書院造には、どんな特徴がある？</li>
+                  <li>今の和室と同じところは？</li>
+                  <li>床の間・違い棚・付書院は何？</li>
+                </ul>
+              </div>
+              <div class="tip-box">
+                <strong>調べるポイント</strong>
+                <p>「室町時代の部屋」と「今の和室」を比べてみよう。</p>
+              </div>
+            </details>
+          </article>
+
+          <article class="topic-card living" id="suibokuga" data-topic="suibokuga">
+            <span class="topic-number">02</span>
+            <h3>水墨画・<ruby>雪舟<rt>せっしゅう</rt></ruby></h3>
+            <p class="topic-lead">墨の濃さで、景色を表す</p>
+            <p class="topic-desc">墨の濃淡を使って山や水、自然の様子を表す水墨画。室町時代を代表する画家の一人が雪舟です。</p>
+            <div class="link-row">
+              <a class="source-link" href="https://kids.yahoo.co.jp/study/social/soc031.html" target="_blank" rel="noopener noreferrer" data-theme="suibokuga">NHK動画を見る ↗</a>
+            </div>
+            <details>
+              <summary>ノートにメモ・調べるポイント</summary>
+              <div class="memo-box">
+                <strong>ノートにメモ</strong>
+                <ul>
+                  <li>水墨画は、どんな絵？</li>
+                  <li>雪舟はどんな人物？</li>
+                  <li>墨の濃さや筆づかいに、どんな工夫がある？</li>
+                </ul>
+              </div>
+              <div class="tip-box">
+                <strong>調べるポイント</strong>
+                <p>「何が描かれているか」だけでなく、「どうやって表しているか」に注目しよう。</p>
+              </div>
+            </details>
+          </article>
+
+          <article class="topic-card living" id="karesansui" data-topic="karesansui">
+            <span class="topic-number">03</span>
+            <h3><ruby>枯山水<rt>かれさんすい</rt></ruby></h3>
+            <p class="topic-lead">水がないのに、どうして山水？</p>
+            <p class="topic-desc">石や白砂などを使って、自然の風景を表す庭。室町時代に禅の文化とも結びつきながら発展しました。</p>
+            <div class="link-row">
+              <a class="source-link" href="https://ja.kyoto.travel/tourism/single01.php?tourism_id=482" target="_blank" rel="noopener noreferrer" data-theme="karesansui">龍安寺を見る ↗</a>
+              <a class="source-link" href="https://zazenmap.jp/articles/karesansui/" target="_blank" rel="noopener noreferrer" data-theme="karesansui">くわしく調べる ↗</a>
+            </div>
+            <details>
+              <summary>ノートにメモ・調べるポイント</summary>
+              <div class="memo-box">
+                <strong>ノートにメモ</strong>
+                <ul>
+                  <li>枯山水には、何が使われている？</li>
+                  <li>石や砂は何を表している？</li>
+                  <li>水がないのに、なぜ「山水」なの？</li>
+                </ul>
+              </div>
+              <div class="tip-box">
+                <strong>調べるポイント</strong>
+                <p>まず写真をよく見よう。「何に見えるか」を自分で考えてから説明を読もう。</p>
+              </div>
+            </details>
+          </article>
+
+          <article class="topic-card living" id="nou" data-topic="nou">
+            <span class="topic-number">04</span>
+            <h3>能・狂言</h3>
+            <p class="topic-lead">室町時代から続く舞台</p>
+            <p class="topic-desc">観阿弥・世阿弥によって能が大成され、狂言とともに現在まで受け継がれています。</p>
+            <div class="link-row">
+              <a class="source-link" href="https://www.bunka.go.jp/prmagazine/rensai/youkoso/youkoso_006.html" target="_blank" rel="noopener noreferrer" data-theme="nou">文化庁で調べる ↗</a>
+              <a class="source-link" href="https://kids.yahoo.co.jp/study/social/soc031.html" target="_blank" rel="noopener noreferrer" data-theme="nou">NHK動画を見る ↗</a>
+            </div>
+            <details>
+              <summary>ノートにメモ・調べるポイント</summary>
+              <div class="memo-box">
+                <strong>ノートにメモ</strong>
+                <ul>
+                  <li>能と狂言は、どんなところがちがう？</li>
+                  <li>観阿弥・世阿弥は何をした？</li>
+                  <li>今もどんな場で演じられている？</li>
+                </ul>
+              </div>
+              <div class="tip-box">
+                <strong>調べるポイント</strong>
+                <p>「室町時代の文化が、今も実際に行われている」ことに注目しよう。</p>
+              </div>
+            </details>
+          </article>
+
+          <article class="topic-card living" id="tea" data-topic="tea">
+            <span class="topic-number">05</span>
+            <h3>茶の湯</h3>
+            <p class="topic-lead">お茶から広がった文化</p>
+            <p class="topic-desc">お茶を飲むだけでなく、人をもてなすこと、道具、作法、空間などを大切にする文化です。</p>
+            <div class="link-row">
+              <a class="source-link" href="https://www.urasenke.or.jp/home/textb/shiru/" target="_blank" rel="noopener noreferrer" data-theme="tea">茶の湯を調べる ↗</a>
+            </div>
+            <details>
+              <summary>ノートにメモ・調べるポイント</summary>
+              <div class="memo-box">
+                <strong>ノートにメモ</strong>
+                <ul>
+                  <li>茶の湯は、どんな文化？</li>
+                  <li>何を大切にしている？</li>
+                  <li>室町時代から、どのように発展した？</li>
+                </ul>
+              </div>
+              <div class="tip-box">
+                <strong>調べるポイント</strong>
+                <p>「お茶」だけでなく、「人をもてなす」という視点でも見てみよう。</p>
+              </div>
+            </details>
+          </article>
+
+          <article class="topic-card living" id="ikebana" data-topic="ikebana">
+            <span class="topic-number">06</span>
+            <h3>いけばな</h3>
+            <p class="topic-lead">花を生ける文化</p>
+            <p class="topic-desc">いけばなの歴史をたどると室町時代につながります。その後、さまざまな形に発展しながら今も続いています。</p>
+            <div class="link-row">
+              <a class="source-link" href="https://www.ikenobo.jp/ikebanaikenobo/history/" target="_blank" rel="noopener noreferrer" data-theme="ikebana">いけばなの歴史を見る ↗</a>
+            </div>
+            <details>
+              <summary>ノートにメモ・調べるポイント</summary>
+              <div class="memo-box">
+                <strong>ノートにメモ</strong>
+                <ul>
+                  <li>いけばなは、いつごろ成立した？</li>
+                  <li>どんな工夫をして花を生ける？</li>
+                  <li>室町時代から今まで、どう変わった？</li>
+                </ul>
+              </div>
+              <div class="tip-box">
+                <strong>調べるポイント</strong>
+                <p>「昔のまま」ではなく、「受け継がれながら変化している」ことにも注目しよう。</p>
+              </div>
+            </details>
+          </article>
+
+          <article class="topic-card living" id="gion" data-topic="gion">
+            <span class="topic-number">07</span>
+            <h3>祇園祭</h3>
+            <p class="topic-lead">室町時代に発展した祭り</p>
+            <p class="topic-desc">祇園祭そのものはもっと昔から続いています。室町時代には町衆が力を持ち、祭りが大きく発展しました。</p>
+            <div class="link-row">
+              <a class="source-link" href="https://ja.kyoto.travel/event/major/gion/" target="_blank" rel="noopener noreferrer" data-theme="gion">京都市公式で調べる ↗</a>
+            </div>
+            <details>
+              <summary>ノートにメモ・調べるポイント</summary>
+              <div class="memo-box">
+                <strong>ノートにメモ</strong>
+                <ul>
+                  <li>祇園祭は、どんな祭り？</li>
+                  <li>室町時代に、どんな変化があった？</li>
+                  <li>今の祇園祭と似ているところは？</li>
+                </ul>
+              </div>
+              <div class="tip-box">
+                <strong>調べるポイント</strong>
+                <p>「いつ始まったか」だけでなく、「室町時代にどう発展したか」を調べよう。</p>
+              </div>
+            </details>
+          </article>
+
+          <article class="topic-card life" id="otogizoshi" data-topic="otogizoshi">
+            <span class="topic-number">08</span>
+            <h3>おとぎ草子・昔話</h3>
+            <p class="topic-lead">今も知っている物語が、室町時代にも</p>
+            <p class="topic-desc">『浦島太郎』などの物語は、室町時代の「お伽草子」にも登場します。絵入りの物語として親しまれました。</p>
+            <div class="link-row">
+              <a class="source-link" href="https://www.nijl.ac.jp/etenji/bungakushi/contents/detail/detail03-02_005.html" target="_blank" rel="noopener noreferrer" data-theme="otogizoshi">浦島太郎を見る ↗</a>
+              <a class="source-link" href="https://www.ndl.go.jp/kaleido/entry/36/2.html" target="_blank" rel="noopener noreferrer" data-theme="otogizoshi">絵入り物語を調べる ↗</a>
+            </div>
+            <details>
+              <summary>ノートにメモ・調べるポイント</summary>
+              <div class="memo-box">
+                <strong>ノートにメモ</strong>
+                <ul>
+                  <li>どんな物語があった？</li>
+                  <li>今の物語と、どこが同じ？</li>
+                  <li>絵入りの本はどんなものだった？</li>
+                </ul>
+              </div>
+              <div class="tip-box">
+                <strong>調べるポイント</strong>
+                <p>「今も知っている！」と思ったところを探してみよう。</p>
+              </div>
+            </details>
+          </article>
+
+          <article class="topic-card life" id="market" data-topic="market">
+            <span class="topic-number">09</span>
+            <h3>市・商売・ものづくり</h3>
+            <p class="topic-lead">人や物が行き交う町</p>
+            <p class="topic-desc">農業や手工業が発達し、市が開かれ、物の売り買いがさかんになりました。商人や職人も活躍しました。</p>
+            <div class="link-row">
+              <a class="source-link" href="https://www.pref.hiroshima.lg.jp/site/rekishih/outi-kusado.html" target="_blank" rel="noopener noreferrer" data-theme="market">草戸千軒を調べる ↗</a>
+              <a class="source-link" href="https://www.pref.hiroshima.lg.jp/site/rekishih/market.html" target="_blank" rel="noopener noreferrer" data-theme="market">市場を見る ↗</a>
+            </div>
+            <details>
+              <summary>ノートにメモ・調べるポイント</summary>
+              <div class="memo-box">
+                <strong>ノートにメモ</strong>
+                <ul>
+                  <li>市場では何が売られていた？</li>
+                  <li>どんな仕事をする人がいた？</li>
+                  <li>人や物はどのように行き来していた？</li>
+                </ul>
+              </div>
+              <div class="tip-box">
+                <strong>調べるポイント</strong>
+                <p>「室町時代の人々は、どんな生活をしていたのか」を想像しながら見よう。</p>
+              </div>
+            </details>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="guide-title">
+        <div class="section-title">
+          <h2 id="guide-title">調べ学習のコツ</h2>
+          <p>リンクを開いたら、ノートに戻ってこよう。</p>
+        </div>
+        <div class="guide-grid">
+          <article class="guide-item">
+            <span class="guide-step">01</span>
+            <h3>まず見る</h3>
+            <p>写真や動画を先に見て、「気になったこと」を一つ見つけよう。</p>
+          </article>
+          <article class="guide-item">
+            <span class="guide-step">02</span>
+            <h3>比べる</h3>
+            <p>昔と今で、同じところ・ちがうところを探そう。</p>
+          </article>
+          <article class="guide-item">
+            <span class="guide-step">03</span>
+            <h3>言いかえる</h3>
+            <p>文章をそのまま写すだけでなく、自分の言葉で短くまとめよう。</p>
+          </article>
+          <article class="guide-item">
+            <span class="guide-step">04</span>
+            <h3>つなげる</h3>
+            <p>「今の生活にどうつながっている？」まで考えてみよう。</p>
+          </article>
+        </div>
+        <div class="notebook-note">
+          <strong>ノートには、こんなことをメモしよう。</strong><br>
+          「分かったこと」＋「へえ！と思ったこと」＋「今とのつながり」＋「なぜ残っていると思う？」<br>
+          4つ全部でなくても大丈夫。大事だと思ったことを選んで書こう。
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="summary-title">
+        <div class="summary-card">
+          <div class="section-title">
+            <h2 id="summary-title">最後に、考えてみよう</h2>
+          </div>
+          <p class="summary-question">なぜ、室町時代の文化が今まで残っているのだろう？</p>
+          <div class="lens-grid">
+            <article class="lens">
+              <b>広がり</b>
+              <p>武士や貴族だけでなく、まちや村の人々にも広がったのかな？</p>
+            </article>
+            <article class="lens">
+              <b>身近さ</b>
+              <p>畳や障子、行事など、今の生活の一部になったものはあるかな？</p>
+            </article>
+            <article class="lens">
+              <b>変化</b>
+              <p>時代に合わせて形を変えたり、大切に受け継がれたりしたのかな？</p>
+            </article>
+          </div>
+          <div class="notebook-note">
+            <strong>まとめは、自分の考えで。</strong><br>
+            「〇〇だから、今も残っていると思う。」のように、自分が調べた文化を例にして書いてみよう。
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        今に伝わる室町文化｜6年社会科 調べ学習
+      </footer>
+    </div>
+  </main>
+
+  <!--
+    開発メモ：
+    ・基本設計は TT-sensei/edu-kit の DESIGN-PRINCIPLES / AI-GUIDE に準拠。
+    ・NAVI画像は TT-sensei/navi-character- の軽量WebPを使用。
+    ・外部資料URLは学校利用を想定し、別タブで開く。
+    ・e国宝は学校PCでの閲覧性を考慮して採用していない。
+    ・子ども向け画面ではGitHub等の開発情報を表示しない。
+  -->
+
+  <script>
+    (() => {
+      const STORAGE_KEY = 'muro-machi-culture-study-topic';
+      const cards = [...document.querySelectorAll('.topic-card')];
+      const links = [...document.querySelectorAll('a[data-theme]')];
+
+      const clearActive = () => {
+        cards.forEach(card => card.classList.remove('study-now'));
+      };
+
+      const setActive = (topic, shouldScroll = false) => {
+        clearActive();
+        if (!topic) return;
+        const card = document.querySelector(`.topic-card[data-topic="${CSS.escape(topic)}"]`);
+        if (!card) return;
+        card.classList.add('study-now');
+        if (shouldScroll) {
+          card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      };
+
+      links.forEach(link => {
+        link.addEventListener('click', () => {
+          const topic = link.dataset.theme;
+          if (!topic || topic === 'overview') return;
+          try {
+            sessionStorage.setItem(STORAGE_KEY, topic);
+          } catch (_) {}
+          setActive(topic);
+        });
+      });
+
+      try {
+        const saved = sessionStorage.getItem(STORAGE_KEY);
+        if (saved) setActive(saved);
+      } catch (_) {}
+    })();
+  </script>
+</body>
+</html>
